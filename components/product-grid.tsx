@@ -274,7 +274,7 @@ const products = [
     name: "Sex Adict 28K",
     description: "Sabor provocante, estilo único e pura intensidade!",
     price: "R$ 115,00",
-    image: "/29.jpg", 
+    image: "/28.jpg", 
     brand: "Sex Adict",
     colors: ["primary", "secondary"],
   },
