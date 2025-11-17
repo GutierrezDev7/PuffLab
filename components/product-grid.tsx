@@ -264,7 +264,7 @@ const products = [
     name: "Ignite V55 Ultra",
     description: "Pequeno no tamanho, gigante no sabor.",
     price: "R$ 90,00",
-    image: "/28.jpg", 
+    image: "/29.jpg", 
     badge: "ULTRA",
     brand: "Ignite",
     colors: ["secondary", "accent"],
