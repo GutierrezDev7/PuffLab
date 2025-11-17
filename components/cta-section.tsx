@@ -29,13 +29,13 @@ export function CTASection() {
 
               {/* Heading */}
               <h2 className="text-2xl sm:text-3xl lg:text-4xl leading-tight text-balance">
-                NA COMPRA DE 6 PODS
+                NA COMPRA DE 5 PODS
                 <span className="block mt-2">RECEBA 30% OFF</span>
               </h2>
 
               {/* Description */}
               <p className="text-xs sm:text-sm leading-relaxed opacity-90 max-w-md">
-                Entre em contato no instagram para receber um codigo exclusivo para compartilhar com seus amigos, e ganhar 10% de desconto na sua próxima compra!
+                Marque nosso instagram @laboratorio_da_fumaca e tire uma foto da sua compra, quando chegar a 5 compras, ganhe 30% de desconto na sua próxima compra!
               </p>
 
               {/* CTA */}
@@ -55,7 +55,7 @@ export function CTASection() {
             <div className="relative hidden lg:block">
               <div className="relative aspect-square max-w-sm ml-auto">
                 <img
-                  src="/promo.png"
+                  src="/promocaoo.png"
                   alt="Oferta Especial"
                   className="w-full h-full object-contain pixel-corners pixel-shadow-lg"
                 />
