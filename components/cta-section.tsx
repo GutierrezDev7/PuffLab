@@ -55,7 +55,7 @@ export function CTASection() {
             <div className="relative hidden lg:block">
               <div className="relative aspect-square max-w-sm ml-auto">
                 <img
-                  src="/special-offer-vape-products-pixel-art-gaming-style.jpg"
+                  src="/promo.png"
                   alt="Oferta Especial"
                   className="w-full h-full object-contain pixel-corners pixel-shadow-lg"
                 />

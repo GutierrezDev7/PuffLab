@@ -78,7 +78,7 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent opacity-20 pixel-corners animate-pulse-custom" />
               <div className="relative h-full flex items-center justify-center">
                 <img
-                  src="/special-offer-vape-products-pixel-art-gaming-style.jpg"
+                  src="/promo.png"
                   alt="PUFF LAB Pod"
                   className="w-full h-full object-contain pixel-corners pixel-shadow-xl"
                 />
