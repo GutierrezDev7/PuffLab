@@ -298,7 +298,7 @@ export function ProductGrid() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 overflow-x-auto px-1">
           <button
             onClick={() => setSelectedBrand("Todos")}
             className={`px-3 py-2 text-xs sm:text-sm border-2 border-border pixel-corners ${

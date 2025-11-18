@@ -2,7 +2,7 @@
 
 import { ShoppingCart, Menu, X, Trash2, Plus, Minus } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useCart, buildWhatsAppUrl } from "@/components/cart-context"
 import { Toaster } from "sonner"
 
@@ -10,6 +10,14 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
   const { items, count, total, updateQuantity, removeFromCart, clear } = useCart()
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
 
   return (
     <header className="sticky top-0 z-50 border-b-4 border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -82,7 +90,7 @@ export function Header() {
         )}
 
         {cartOpen && (
-          <div className="mt-4 border-4 border-border pixel-corners bg-card p-4">
+          <div className="mt-4 border-4 border-border pixel-corners bg-card p-4 overflow-hidden sm:max-w-md mx-auto">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs sm:text-sm font-bold">Seu carrinho</span>
               <span className="text-xs sm:text-sm">Total: R$ {total.toFixed(2).replace('.', ',')}</span>
@@ -92,7 +100,7 @@ export function Header() {
             ) : (
               <div className="space-y-3">
                 {items.map((item) => (
-                  <div key={item.id} className="flex items-center justify-between border-2 border-border p-2 pixel-corners">
+                  <div key={item.id} className="flex flex-wrap items-center justify-between border-2 border-border p-2 pixel-corners gap-2">
                     <div className="flex items-center gap-3">
                       <img src={item.image} alt={item.name} className="w-10 h-10 object-cover" />
                       <div className="text-[10px] sm:text-xs">
@@ -100,7 +108,7 @@ export function Header() {
                         <div>{item.priceBRL}</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <Button size="sm" className="pixel-corners h-auto p-1" onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}>
                         <Minus className="h-3 w-3" />
                       </Button>
@@ -114,11 +122,11 @@ export function Header() {
                     </div>
                   </div>
                 ))}
-                <div className="flex justify-end gap-2">
-                  <Button size="sm" variant="outline" className="pixel-corners" onClick={clear}>Limpar</Button>
+                <div className="flex flex-col sm:flex-row sm:justify-end gap-2">
+                  <Button size="sm" variant="outline" className="pixel-corners w-full sm:w-auto" onClick={clear}>Limpar</Button>
                   <Button
                     size="sm"
-                    className="pixel-corners pixel-shadow"
+                    className="pixel-corners pixel-shadow w-full sm:w-auto"
                     onClick={() => {
                       const url = buildWhatsAppUrl(items, total, "+556291724624")
                       window.open(url, "_blank")
@@ -132,7 +140,7 @@ export function Header() {
           </div>
         )}
       </div>
-      <Toaster richColors position="top-left" />
+      {!isMobile && <Toaster richColors position="top-left" />}
     </header>
   )
 }
