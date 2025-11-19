@@ -90,7 +90,7 @@ export function Header() {
         )}
 
         {cartOpen && (
-          <div className="mt-4 border-4 border-border pixel-corners bg-card p-4 overflow-hidden sm:max-w-md mx-auto">
+          <div className="mt-4 border-4 border-border pixel-corners bg-card p-4 sm:max-w-md w-full max-w-[calc(100%-1rem)] mx-auto flex flex-col max-h-[80vh]">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs sm:text-sm font-bold">Seu carrinho</span>
               <span className="text-xs sm:text-sm">Total: R$ {total.toFixed(2).replace('.', ',')}</span>
@@ -98,16 +98,17 @@ export function Header() {
             {items.length === 0 ? (
               <div className="text-[10px] sm:text-xs text-muted-foreground">Carrinho vazio</div>
             ) : (
-              <div className="space-y-3">
-                {items.map((item) => (
-                  <div key={item.id} className="flex flex-wrap items-center justify-between border-2 border-border p-2 pixel-corners gap-2">
-                    <div className="flex items-center gap-3">
-                      <img src={item.image} alt={item.name} className="w-10 h-10 object-cover" />
-                      <div className="text-[10px] sm:text-xs">
-                        <div className="font-bold">{item.name}</div>
-                        <div>{item.priceBRL}</div>
+              <>
+                <div className="space-y-3 flex-1 overflow-y-auto pr-1">
+                  {items.map((item) => (
+                    <div key={item.id} className="flex flex-wrap items-center justify-between border-2 border-border p-2 pixel-corners gap-2">
+                      <div className="flex items-center gap-3">
+                        <img src={item.image} alt={item.name} className="w-10 h-10 object-cover" />
+                        <div className="text-[10px] sm:text-xs">
+                          <div className="font-bold">{item.name}</div>
+                          <div>{item.priceBRL}</div>
+                        </div>
                       </div>
-                    </div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <Button size="sm" className="pixel-corners h-auto p-1" onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}>
                         <Minus className="h-3 w-3" />
@@ -121,8 +122,9 @@ export function Header() {
                       </Button>
                     </div>
                   </div>
-                ))}
-                <div className="flex flex-col sm:flex-row sm:justify-end gap-2">
+                  ))}
+                </div>
+                <div className="mt-3 flex flex-col sm:flex-row sm:justify-end gap-2">
                   <Button size="sm" variant="outline" className="pixel-corners w-full sm:w-auto" onClick={clear}>Limpar</Button>
                   <Button
                     size="sm"
@@ -135,7 +137,7 @@ export function Header() {
                     Finalizar compra
                   </Button>
                 </div>
-              </div>
+              </>
             )}
           </div>
         )}
